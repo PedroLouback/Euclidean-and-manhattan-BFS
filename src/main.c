@@ -1,9 +1,8 @@
 #include "fila.h"
 
-
 int main()
 {
-    int tam = 0, i = 0, j = 0, metodo=0;
+    int tam = 0, i = 0, j = 0;
     int **matriz;
 
     FILE *arquivo;

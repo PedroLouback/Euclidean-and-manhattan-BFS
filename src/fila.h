@@ -1,9 +1,10 @@
 #ifndef FILA_H 
 #define FILA_H
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct Item Item;
 typedef struct Block Block;
@@ -12,6 +13,7 @@ typedef struct Fila Fila;
 struct Item{
 	int x;
 	int y;
+	float distancia;
 };
 
 struct Block{
@@ -36,5 +38,7 @@ void FImprime(Fila *f);
 void ImprimirMatriz(int tam, int **matriz);
 
 void BFS(int **matriz, int tam);
+
+Fila OrdenaFila(Fila *fila_distancia, int tam);
 
 #endif

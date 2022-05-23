@@ -18,7 +18,7 @@ $(OBJ_DIR)/%.o: %.cpp
 
 $(APP_DIR)/$(TARGET): $(OBJECTS)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) -o $(APP_DIR)/$(TARGET) $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) -o $(APP_DIR)/$(TARGET) $(OBJECTS) -lm
 
 .PHONY: all build clean debug release run
 
@@ -37,4 +37,4 @@ clean:
 	-@rm -rvf $(APP_DIR)/*
 
 run:
-	./$(BUILD)/$(TARGET)
+	./$(BUILD)/$(TARGET) 
