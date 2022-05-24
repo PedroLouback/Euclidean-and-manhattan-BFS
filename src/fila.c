@@ -70,7 +70,7 @@ Fila OrdenaFila(Fila *fila_distancia, int tam)
 	{
 		aux2->pos.distancia = aux->pos.distancia;
 		vetor[i] = aux2->pos.distancia;
-		Desenfileira(fila_distancia, &aux2);
+		Desenfileira(fila_distancia, &aux);
 		i++;
 		aux = aux->prox;
 	}
