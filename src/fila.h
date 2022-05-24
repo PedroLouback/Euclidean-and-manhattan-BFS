@@ -39,6 +39,8 @@ void ImprimirMatriz(int tam, int **matriz);
 
 void BFS(int **matriz, int tam);
 
+bool Busca_A(Fila *fila_distancia, int pos_atual_x, int pos_atual_y, int tam);
+
 Fila OrdenaFila(Fila *fila_distancia, int tam);
 
 #endif
