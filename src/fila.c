@@ -122,7 +122,7 @@ bool Busca_A(Fila *fila_distancia, int pos_atual_x, int pos_atual_y, int tam)
 		aux.distancia = distancia_euclidiana;
 		Enfileira(fila_distancia, aux);
 		OrdenaFila(fila_distancia, tam);
-		if(distancia_euclidiana <= aux.distancia){
+		if(distancia_euclidiana > fila_distancia->last->pos.distancia){
 			printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
 			return true;
 		}
