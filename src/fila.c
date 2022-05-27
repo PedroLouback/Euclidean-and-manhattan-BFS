@@ -104,11 +104,10 @@ Fila OrdenaFila(Fila *fila_distancia, int tam)
 	return *fila_distancia;
 }
 
-bool Busca_A(int **matriz, Fila *fila_distancia, int pos_atual_x, int pos_atual_y, int tam, int escolha)
+bool Busca_A(Fila *fila_distancia, int pos_atual_x, int pos_atual_y, int tam, int escolha)
 {
 	int pos_final_x = tam - 1;
 	int pos_final_y = tam - 1;
-	int aux_x = 0, aux_y = 0;
 	float distancia_euclidiana = 0, distancia_manhattan = 0;
 	Item aux;
 
@@ -148,147 +147,12 @@ bool Busca_A(int **matriz, Fila *fila_distancia, int pos_atual_x, int pos_atual_
 		}
 		else
 		{
-			if (pos_atual_x != tam - 1 && pos_atual_y == 1)
-			{
-				if (matriz[pos_atual_x + 1][pos_atual_y] != 0 && matriz[pos_atual_x - 1][pos_atual_y] != 0)
-				{
-					if (matriz[pos_atual_x][pos_atual_y + 1] != 0)
-					{
-						distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-						if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-						{
-
-							aux.distancia = distancia_manhattan;
-							Enfileira(fila_distancia, aux);
-							OrdenaFila(fila_distancia, tam);
-							printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-							return true;
-						}
-					}
-				}
-			}
-			if (pos_atual_x == tam - 1 && pos_atual_y != tam - 1)
-			{
-				if (matriz[pos_atual_x - 1][pos_atual_y] != 0)
-				{
-					if (matriz[pos_atual_x][pos_atual_y + 1] != 0 && matriz[pos_atual_x][pos_atual_y - 1] != 0)
-					{
-						distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-						if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-						{
-
-							aux.distancia = distancia_manhattan;
-							Enfileira(fila_distancia, aux);
-							OrdenaFila(fila_distancia, tam);
-							printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-							return true;
-						}
-					}
-				}
-			}
-			else
-			{
-				if (matriz[pos_atual_x + 1][pos_atual_y] != 0 && matriz[pos_atual_x - 1][pos_atual_y] != 0)
-				{
-					if (matriz[pos_atual_x][pos_atual_y + 1] != 0 && matriz[pos_atual_x][pos_atual_y - 1] != 0)
-					{
-						distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-						if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-						{
-
-							aux.distancia = distancia_manhattan;
-							Enfileira(fila_distancia, aux);
-							OrdenaFila(fila_distancia, tam);
-							printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-							return true;
-						}
-					}
-				}
-			}
-
-			if (pos_atual_x != 0 && pos_atual_x != tam - 1)
-			{
-				aux_x = pos_atual_x + 1;
-				aux_y = pos_atual_y - 1;
-				if (aux_x == tam - 1 && aux_y == 0){
-					if (matriz[aux_x - 1][aux_y] != 0)
-					{
-						if (matriz[aux_x][aux_y + 1] != 0)
-						{
-							distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-							if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-							{
-								aux.distancia = distancia_manhattan;
-								Enfileira(fila_distancia, aux);
-								OrdenaFila(fila_distancia, tam);
-								printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-								return true;
-							}
-						}
-					}
-				}
-				if (aux_x != tam - 1 && aux_y == 1)
-				{
-					if (matriz[aux_x + 1][aux_y] != 0 && matriz[aux_x - 1][aux_y] != 0)
-					{
-						if (matriz[aux_x][aux_y + 1] != 0)
-						{
-							distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-							if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-							{
-								aux.distancia = distancia_manhattan;
-								Enfileira(fila_distancia, aux);
-								OrdenaFila(fila_distancia, tam);
-								printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-								return true;
-							}
-						}
-					}
-				}
-				if (aux_x == tam - 1 && aux_y != tam - 1)
-				{
-					if (matriz[aux_x - 1][aux_y] != 0)
-					{
-						if (matriz[aux_x][aux_y + 1] != 0 && matriz[aux_x][aux_y - 1] != 0)
-						{
-							distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-							if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-							{
-								aux.distancia = distancia_manhattan;
-								Enfileira(fila_distancia, aux);
-								OrdenaFila(fila_distancia, tam);
-								printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-								return true;
-							}
-						}
-					}
-				}
-				else
-				{
-					if (matriz[aux_x + 1][aux_y] != 0 && matriz[aux_x - 1][aux_y] != 0)
-					{
-						if (matriz[aux_x][aux_y + 1] != 0 && matriz[aux_x][aux_y - 1] != 0)
-						{
-							distancia_manhattan = (abs(pos_atual_x - pos_final_x) + abs((pos_atual_y)-pos_final_y));
-							if (distancia_manhattan >= fila_distancia->last->pos.distancia)
-							{
-								aux.distancia = distancia_manhattan;
-								Enfileira(fila_distancia, aux);
-								OrdenaFila(fila_distancia, tam);
-								printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
-								return true;
-							}
-						}
-					}
-				}
-			}
 
 			if (distancia_manhattan < fila_distancia->last->pos.distancia)
 			{
 				aux.distancia = distancia_manhattan;
 				Enfileira(fila_distancia, aux);
 				OrdenaFila(fila_distancia, tam);
-				printf("\nA menor distância na posição %d %d é: %f\n", pos_atual_x, pos_atual_y, aux.distancia);
 				return true;
 			}
 		}
@@ -314,7 +178,7 @@ void BFS(int **matriz, int tam)
 
 	aux.x = i;
 	aux.y = j;
-	if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+	if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 	{
 		Enfileira(&f, aux);
 	}
@@ -327,7 +191,7 @@ void BFS(int **matriz, int tam)
 			{
 				aux.x = i + 1;
 				aux.y = j;
-				if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+				if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 				{
 					Enfileira(&f, aux);
 					count_caminho++;
@@ -341,10 +205,9 @@ void BFS(int **matriz, int tam)
 			{
 				aux.x = i;
 				aux.y = j + 1;
-				if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+				if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 				{
 					Enfileira(&f, aux);
-					matriz[aux.x][aux.y] = 2;
 					count_caminho++;
 				}
 				else
@@ -352,7 +215,7 @@ void BFS(int **matriz, int tam)
 					matriz[aux.x][aux.y] = 1;
 				}
 			}
-			if (matriz[i][j] == 2)
+			if (matriz[i][j] != 1)
 			{
 				Desenfileira(&f, &aux);
 			}
@@ -365,10 +228,9 @@ void BFS(int **matriz, int tam)
 			{
 				aux.x = i + 1;
 				aux.y = j;
-				if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+				if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 				{
 					Enfileira(&f, aux);
-					matriz[aux.x][aux.y] = 2;
 					count_caminho++;
 				}
 				else
@@ -380,10 +242,9 @@ void BFS(int **matriz, int tam)
 			{
 				aux.x = i;
 				aux.y = j + 1;
-				if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+				if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 				{
 					Enfileira(&f, aux);
-					matriz[aux.x][aux.y] = 2;
 					count_caminho++;
 				}
 				else
@@ -391,7 +252,7 @@ void BFS(int **matriz, int tam)
 					matriz[aux.x][aux.y] = 1;
 				}
 			}
-			if (matriz[i][j] == 2)
+			if (matriz[i][j] != 1)
 			{
 				Desenfileira(&f, &aux);
 			}
@@ -409,12 +270,12 @@ void BFS(int **matriz, int tam)
 				{
 					aux.x = aux_i;
 					aux.y = aux_j + 1;
-					if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+					if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 					{
 						Enfileira(&f, aux);
 						matriz[aux.x][aux.y] = 2;
 						count_caminho++;
-						if (matriz[i][j] == 2)
+						if (matriz[i][j] != 1)
 						{
 							Desenfileira(&f, &aux);
 						}
@@ -437,12 +298,11 @@ void BFS(int **matriz, int tam)
 			{
 				aux.x = i;
 				aux.y = j + 1;
-				if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+				if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 				{
 					Enfileira(&f, aux);
-					matriz[aux.x][aux.y] = 2;
 					count_caminho++;
-					if (matriz[i][j] == 2)
+					if (matriz[i][j] != 1)
 					{
 						Desenfileira(&f, &aux);
 					}
@@ -467,12 +327,12 @@ void BFS(int **matriz, int tam)
 				{
 					aux.x = aux_i;
 					aux.y = aux_j + 1;
-					if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+					if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 					{
 						Enfileira(&f, aux);
 						matriz[aux.x][aux.y] = 2;
 						count_caminho++;
-						if (matriz[i][j] == 2)
+						if (matriz[i][j] != 1)
 						{
 							Desenfileira(&f, &aux);
 						}
@@ -493,12 +353,11 @@ void BFS(int **matriz, int tam)
 			{
 				aux.x = i;
 				aux.y = j + 1;
-				if (Busca_A(matriz, &fila_distancia, aux.x, aux.y, tam, escolha) == true)
+				if (Busca_A(&fila_distancia, aux.x, aux.y, tam, escolha) == true)
 				{
 					Enfileira(&f, aux);
-					matriz[aux.x][aux.y] = 2;
 					count_caminho++;
-					if (matriz[i][j] == 2)
+					if (matriz[i][j] != 1)
 					{
 						Desenfileira(&f, &aux);
 					}
