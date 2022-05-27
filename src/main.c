@@ -47,10 +47,64 @@ int main()
 
         if (escolha == 1)
         {
+            FILE *arquivo;
+
+            arquivo = fopen("matriz.txt", "r");
+
+            if (arquivo == NULL)
+            {
+                printf("\nArquivo inválido.\n");
+                return 0;
+            }
+
+            fscanf(arquivo, "%d", &tam);
+
+            matriz = (int **)malloc(sizeof(int *) * tam);
+            for (i = 0; i < tam; i++)
+            {
+                matriz[i] = (int *)malloc(sizeof(int) * tam);
+            }
+
+            for (i = 0; i < tam; i++)
+            {
+                for (j = 0; j < tam; j++)
+                {
+                    fscanf(arquivo, "%d", &matriz[i][j]);
+                }
+            }
+
+            fclose(arquivo);
             BFS(matriz, tam);
         }
         else if (escolha == 2)
         {
+            FILE *arquivo;
+
+            arquivo = fopen("matriz.txt", "r");
+
+            if (arquivo == NULL)
+            {
+                printf("\nArquivo inválido.\n");
+                return 0;
+            }
+
+            fscanf(arquivo, "%d", &tam);
+
+            matriz = (int **)malloc(sizeof(int *) * tam);
+            for (i = 0; i < tam; i++)
+            {
+                matriz[i] = (int *)malloc(sizeof(int) * tam);
+            }
+
+            for (i = 0; i < tam; i++)
+            {
+                for (j = 0; j < tam; j++)
+                {
+                    fscanf(arquivo, "%d", &matriz[i][j]);
+                }
+            }
+
+            fclose(arquivo);
             DFS(matriz, tam);
         }
         else
@@ -59,8 +113,6 @@ int main()
             escolha = 4;
         }
     }
-
-    BFS(matriz, tam);
 
     return 0;
 }
