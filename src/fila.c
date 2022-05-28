@@ -373,5 +373,9 @@ void BFS(int **matriz, int tam)
 			j = tam;
 		}
 	}
-	printf("\nPara chegar ao final da matriz usando o metodo BFS, foi realizado um total de %d interacoes!\n", count_caminho);
+	if(escolha == 1){
+		printf("\nPara chegar ao final da matriz usando o cálculo da distância Euclidiana, foi realizado um total de %d interações!\n", count_caminho);
+	}else{
+		printf("\nPara chegar ao final da matriz usando o cálculo da distância de Manhattan, foi realizado um total de %d interações!\n", count_caminho);
+	}
 }
